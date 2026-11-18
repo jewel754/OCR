@@ -1,0 +1,49 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# MSME GST Invoice Ingestion & Tally Automation Engine
+# requirements.txt  —  tested on Python 3.11 / Windows 11 / Ubuntu 22.04
+# Install:  pip install -r requirements.txt
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ── Core Framework ────────────────────────────────────────────────────────────
+streamlit==1.35.0
+pydantic==2.7.4
+pydantic-settings==2.3.3
+
+# ── PDF / Document Parsing ────────────────────────────────────────────────────
+# docling is the primary digital-PDF extractor (CPU-friendly)
+docling==2.3.0
+pypdf2==3.0.1
+pdfplumber==0.11.1
+pymupdf==1.24.5                    # fitz — fast PDF rasterisation
+
+# ── Image / OCR Processing ────────────────────────────────────────────────────
+opencv-python-headless==4.9.0.80   # headless = no Qt dependency
+Pillow==10.3.0
+pytesseract==0.3.10
+numpy==1.26.4
+
+# ── Fuzzy Matching (SKU / Party master reconciliation) ────────────────────────
+rapidfuzz==3.9.3
+
+# ── HTTP / API Clients ────────────────────────────────────────────────────────
+httpx==0.27.0                      # async-ready, used for Tally HTTP push
+requests==2.32.3
+
+# ── AI / VLM clients (optional — only needed when DEMO_MODE = False) ─────────
+openai==1.35.3                     # GPT-4o Vision
+anthropic==0.29.0                  # Claude 3 Sonnet/Opus Vision
+google-generativeai==0.7.2         # Gemini 1.5 Flash/Pro Vision
+
+# ── Data / Validation ─────────────────────────────────────────────────────────
+pandas==2.2.2
+python-dateutil==2.9.0
+
+# ── XML Generation ───────────────────────────────────────────────────────────
+lxml==5.2.2
+
+# ── Utilities ─────────────────────────────────────────────────────────────────
+python-dotenv==1.0.1
+loguru==0.7.2
+tenacity==8.3.0                    # retry decorator for VLM API calls
+rich==13.7.1                       # pretty console output
+faker==25.3.0                      # used by mock_data.py
